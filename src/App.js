@@ -4,6 +4,8 @@ const App = (props) => {
   console.log('props', props);
   const [todo, setTodo] = useState('');
 
+  console.log(process.env.NODE_ENV);
+  console.log('props.todoList', props.todoList);
   return (
     <div>
       {/* <h1>Hello!{props.name}!</h1> */}
@@ -30,8 +32,8 @@ const App = (props) => {
 
       <div>
         <ul>
-          {props.todoList.map((todo, index) => (
-            <li key={index}>{todo}</li>
+          {props.todoList?.map((todo, index) => (
+            <li key={index}>{todo.text}</li>
           ))}
         </ul>
       </div>
