@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import AppHook from './AppHook';
 import { createStore } from 'redux';
 import { connect, Provider } from 'react-redux';
 
@@ -31,30 +32,32 @@ const reducer = (state = initState, action) => {
 const store = createStore(reducer);
 console.log('store', store);
 
-const addTodo = (todo) => {
-  return {
-    type: ADD_TODOLIST,
-    payload: {
-      todo: todo,
-    },
-  };
-};
+// normal redux
+// const addTodo = (todo) => {
+//   return {
+//     type: ADD_TODOLIST,
+//     payload: {
+//       todo,
+//     },
+//   };
+// };
 
-const mapStateToProps = (state) => ({
-  todoList: state.todoList,
-});
+// const mapStateToProps = (state) => ({
+//   todoList: state.todoList,
+// });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addTodo: (todo) => dispatch(addTodo(todo)),
-  };
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     addTodo: (todo) => dispatch(addTodo(todo)),
+//   };
+// };
 
-const Title = connect(mapStateToProps, mapDispatchToProps)(App);
+// const Title = connect(mapStateToProps, mapDispatchToProps)(App);
 
 ReactDOM.render(
   <Provider store={store}>
-    <Title />
+    {/* <Title /> */}
+    <AppHook />
   </Provider>,
   document.getElementById('root')
 );
